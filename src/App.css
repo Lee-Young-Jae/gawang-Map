@@ -1,38 +1,299 @@
-.App {
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+p {
+  margin: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.Menu {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-grow: 1;
+  transition: 0.5s;
+}
+
+.ClosedMenu {
+  display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 30vw;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-grow: 1;
+  transition: 2s;
+}
+
+.ClosedMenu .menuItem {
+  justify-content: center;
+  border-radius: 35px 0px 0px 35px;
+  min-height: 2.3rem;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #c7c7c731;
+  width: 30%;
+  transition: 0.3s;
+  margin-bottom: 5px;
+  min-height: 2rem;
+}
+
+.menuItem:hover {
+  width: 40%;
+  transition: 0.5s;
+}
+
+.HomePage .map {
+  display: flex;
+  flex-grow: 1;
+  border: 1px solid #ececec;
+  margin: 0 50px;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 0.3rem 0.6rem rgb(0 0 0 / 10%);
+}
+
+.HomePage .mapCol {
+  display: flex;
+  width: 70vw;
+  height: 60vh;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.HomePage .mapItem {
+  min-width: 100%;
+  min-height: 14%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #ececec;
+}
+
+.HomePage .doubleHeightItem {
+  height: 29%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.HomePage .colorForm {
+  display: flex;
+  flex-grow: 1;
+  min-width: 100%;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.HomePage .colorFormItem {
+  border: 1px solid #ececec;
+  width: 30%;
+  max-height: 75%;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.doubleHeightItem .colorForm {
+  max-height: 40%;
+}
+
+.waitingDiv {
+  min-width: 100%;
+  min-height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.waitingDiv:hover {
+  background-color: #ececec;
+  transition: 0.3s;
+}
+
+.colorFormMeaningBox {
+  margin: 10px 50px;
+}
+
+.colorFormMeaning {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.colorFormMeaning div {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ececec;
+  padding: 5px 0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.colorFormMeaning div:hover {
+  border: 1px solid #c7c7c7;
+  transition: 0.5s;
+}
+
+.colorFormMeaning input {
+  border: 1px solid #ececec;
+  min-height: 15px;
+  border-radius: 5px;
+  width: 80%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.setColorBox {
+  margin: 5px 50px 50px 50px;
+  background-color: #ececec;
+  border-radius: 5px;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.paintColorList {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.paintColorList div {
+  font-size: 0.8rem;
+  color: white;
+  border: 2px solid #ececec;
+  cursor: pointer;
+  box-shadow: 0 0.3rem 0.6rem rgb(0 0 0 / 20%);
+  border-radius: 15px;
+  min-width: 70px;
+  text-align: center;
+}
+.setColorBoxHiddenText {
+  opacity: 0%;
+  transition: 0.8s;
+  font-size: 8px;
+}
+
+.setColorBox:hover .setColorBoxHiddenText {
+  opacity: 100%;
+  transition: 0.8s;
+  margin-left: 5px;
+}
+
+.setColorBoxHiddenText:hover {
+  opacity: 100%;
+  transition: 0.8s;
+}
+
+.choiceCurrentColorBtn {
+  border: none;
+  min-height: 27px;
+  margin-left: 140px;
+  cursor: pointer;
+  border-radius: 5px;
+  min-width: 45px;
+  transition: 1s;
+  z-index: 5000;
+  background-color: white;
+}
+
+.choiceCurrentColorBtn:hover {
+  transform: translateY(-1px);
+  background-color: darkgrey;
+  transition: 0.5s;
+}
+
+footer {
+  background-color: rgba(55, 98, 98, 0.532);
+  color: white;
+  text-align: center;
+  font-size: 0.2rem;
+  margin-top: 500px;
+}
+
+.CountingMoney {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moneyInputForm {
+  width: 30%;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: #ececec;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border-radius: 5px;
+}
+
+.moneyInputForm div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.moneyInputForm label {
+  max-width: 50px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.moneyInputForm input {
+  border: none;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 50px;
+  border-radius: 5px;
+}
+
+.moneyInputForm .resultAmount {
+  min-width: 100%;
+}
+
+.Modal {
+  background-color: rgba(0, 0, 0, 0.61);
   color: white;
+  position: fixed;
+  width: 100vw;
+  height: 95vh;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.Servey {
+  width: 70%;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  color: black;
+  font-size: 0.8rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+textarea {
+  border: none;
+  width: 100%;
+  min-height: 20vh;
+  border-radius: 5px;
 }
