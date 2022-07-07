@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import CountingMoney from "../components/CountingMoney";
+import Memo from "../components/Memo";
 import Modal from "../components/Modal";
 import Servey from "../components/Servey";
 
@@ -8,7 +9,11 @@ const Home = () => {
     Array.from({ length: 23 }, () => Array.from({ length: 3 }, () => []))
   );
 
-  const [paintColor, setPaintColor] = useState(["#AFEEC2"]);
+  const [paintColor, setPaintColor] = useState([
+    "#AFEEC2",
+    "#EEAFAF",
+    "#B0AFEE",
+  ]);
   const [currentColor, setCurrentColor] = useState("#AFEEC2");
   const [meaningText_0, setMeaningText_0] = useState("");
   const [meaningText_1, setMeaningText_1] = useState("");
@@ -17,6 +22,7 @@ const Home = () => {
   const [isOpendMenu, setIsOpendMenu] = useState(true);
   const [isOpeendCountingMoney, setIsOpendCountingMoney] = useState(false);
   const [isOpendServeyForm, setIsOpendServeyForm] = useState(false);
+  const [isOpendMemoForm, setIsOpendMemoForm] = useState(false);
 
   useEffect(() => {
     const roomColors = localStorage.getItem("roomColors");
@@ -191,12 +197,37 @@ const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const $countingMoney = document.querySelector(".menuItem-1");
+    const $Servey = document.querySelector(".menuItem-3");
+    const $Memo = document.querySelector(".menuItem-4");
+
+    if (isOpeendCountingMoney) {
+      $countingMoney.classList.add("active");
+    } else if ($countingMoney) {
+      $countingMoney.classList.remove("active");
+    }
+
+    if (isOpendServeyForm && $Servey !== null) {
+      $Servey.classList.add("active");
+    } else if ($Servey) {
+      $Servey.classList.remove("active");
+    }
+
+    if (isOpendMemoForm && $Memo !== null) {
+      $Memo.classList.add("active");
+    } else if ($Memo) {
+      $Memo.classList.remove("active");
+    }
+  }, [isOpeendCountingMoney, isOpendServeyForm, isOpendMemoForm]);
+
   return (
     <div className="HomePage">
       {isOpeendCountingMoney && (
         <Modal parentProps={<CountingMoney></CountingMoney>}></Modal>
       )}
       {isOpendServeyForm && <Modal parentProps={<Servey></Servey>}></Modal>}
+      {isOpendMemoForm && <Modal parentProps={<Memo></Memo>}></Modal>}
       <div className="map">
         <div className="mapCol">
           <div className="mapItem">
@@ -1037,41 +1068,45 @@ const Home = () => {
         </div>
       </div>
       <div className="setColorBox">
-        <span>Current Color</span>{" "}
-        <span className="setColorBoxHiddenText">
-          (선택을 누르면 현재 색상으로 지정되고 팔레트에 색상이 추가됩니다)
-        </span>
-        <form>
-          <input
-            type="color"
-            value={currentColor}
-            onChange={onChangeCurrentColor}
-          ></input>
-          <button
-            className="choiceCurrentColorBtn"
-            onClick={onClickSetCurrentColor}
-          >
-            선택
-          </button>
-        </form>
-        <span>Palette</span>
-        <span className="setColorBoxHiddenText">
-          (좌클릭 - 현재 색상으로 선택, 우클릭 - 팔레트 색상 삭제)
-        </span>
-        <div className="paintColorList">
-          {paintColor.map((e, i) => {
-            return (
-              <div
-                key={i}
-                id={e}
-                style={{ background: `${e}` }}
-                onClick={setThisPaintToCurrentColor}
-                onContextMenu={setThisPaintRemove}
-              >
-                {e}
-              </div>
-            );
-          })}
+        <div className="CurrentColor">
+          <span>Current Color</span>{" "}
+          <span className="setColorBoxHiddenText">
+            (선택을 누르면 현재 색상으로 지정되고 팔레트에 색상이 추가됩니다)
+          </span>
+          <form>
+            <input
+              type="color"
+              value={currentColor}
+              onChange={onChangeCurrentColor}
+            ></input>
+            <button
+              className="choiceCurrentColorBtn"
+              onClick={onClickSetCurrentColor}
+            >
+              선택
+            </button>
+          </form>
+        </div>
+        <div className="Palette">
+          <span>Palette</span>
+          <span className="setColorBoxHiddenText">
+            (좌클릭 - 현재 색상으로 선택, 우클릭 - 팔레트 색상 삭제)
+          </span>
+          <div className="paintColorList">
+            {paintColor.map((e, i) => {
+              return (
+                <div
+                  key={i}
+                  id={e}
+                  style={{ background: `${e}` }}
+                  onClick={setThisPaintToCurrentColor}
+                  onContextMenu={setThisPaintRemove}
+                >
+                  {e}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       {isOpendMenu ? (
@@ -1091,6 +1126,13 @@ const Home = () => {
             onClick={() => setIsOpendServeyForm((prev) => !prev)}
           >
             Survey
+          </div>
+
+          <div
+            className="menuItem menuItem-4"
+            onClick={() => setIsOpendMemoForm((prev) => !prev)}
+          >
+            Memo
           </div>
           <div
             className="menuItem"

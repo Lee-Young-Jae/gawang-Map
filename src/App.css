@@ -23,6 +23,8 @@ html {
   align-items: flex-end;
   flex-grow: 1;
   transition: 0.5s;
+  max-height: 32px;
+  backdrop-filter: blur(5px);
 }
 
 .ClosedMenu {
@@ -51,13 +53,22 @@ html {
   background-color: #c7c7c731;
   width: 30%;
   transition: 0.3s;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   min-height: 2rem;
+  font-size: 0.5rem;
+}
+
+.Menu .active {
+  background-color: rgba(0, 0, 0, 0.61);
+  color: white;
+  transition: 0.7s;
 }
 
 .menuItem:hover {
   width: 40%;
   transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0.61);
+  color: white;
 }
 
 .HomePage .map {
@@ -76,6 +87,7 @@ html {
   height: 60vh;
   flex-grow: 1;
   flex-direction: column;
+  margin: 0 1px;
 }
 
 .HomePage .mapItem {
@@ -85,7 +97,7 @@ html {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid #ececec;
+  border: 1px solid #b1b1b1;
 }
 
 .HomePage .doubleHeightItem {
@@ -93,6 +105,10 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.mapItem p {
+  min-height: auto;
 }
 
 .HomePage .colorForm {
@@ -106,9 +122,15 @@ html {
 .HomePage .colorFormItem {
   border: 1px solid #ececec;
   width: 30%;
-  max-height: 75%;
-  border-radius: 10px;
+  /* max-height: 75%; */
+  min-width: auto;
+  min-height: 100%;
   transition: 0.5s;
+  cursor: pointer;
+}
+
+.colorFormItem:hover {
+  border: 1px solid #c7c7c7;
 }
 
 .doubleHeightItem .colorForm {
@@ -123,6 +145,7 @@ html {
   align-items: center;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 0.8rem;
 }
 
 .waitingDiv:hover {
@@ -198,10 +221,10 @@ html {
   margin-left: 5px;
 }
 
-.setColorBoxHiddenText:hover {
+/* .setColorBoxHiddenText:hover {
   opacity: 100%;
   transition: 0.8s;
-}
+} */
 
 .choiceCurrentColorBtn {
   border: none;
@@ -277,6 +300,8 @@ footer {
   width: 100vw;
   height: 95vh;
   margin: 0 auto;
+  bottom: 32px;
+  padding-top: 32px;
 }
 
 .Servey {
@@ -296,4 +321,152 @@ textarea {
   width: 100%;
   min-height: 20vh;
   border-radius: 5px;
+}
+
+.Memo {
+  width: 70%;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  color: black;
+  font-size: 0.8rem;
+}
+
+.Memo header {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.memoHeader button {
+  border: none;
+  cursor: pointer;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 5px;
+  background-color: #ececec;
+  border: 1px solid #c7c7c7;
+  font-size: 1.2rem;
+  transition: 0.7s;
+}
+
+.memoHeader button:hover {
+  background-color: #c7c7c7;
+  border: 0px solid #c7c7c7;
+  transition: 0.7s;
+}
+
+.Memo .head_text {
+  min-width: 80%;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.memoControlMenu {
+  margin-top: 20px;
+}
+
+.memoControl {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.memoControl p {
+  color: #a9a9a9;
+  opacity: 50;
+  display: flex;
+  align-items: center;
+}
+
+.memoControl input {
+  border: none;
+  min-height: 30px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.memoControlMenu button {
+  border: none;
+  font-size: 1.1rem;
+  float: right;
+  border-radius: 5px;
+  min-height: 30px;
+  background-color: white;
+  border: 1px solid white;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.memoControlMenu button:hover {
+  background-color: #c7c7c7;
+  border: 1px solid white;
+  transition: 0.5s;
+}
+
+.MemoList {
+  max-height: 270px;
+  overflow-y: overlay;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.MemoItem {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-bottom: 5px;
+}
+
+.MemoItem:hover {
+  background-color: white;
+  border: 1px solid #c7c7c7;
+  box-shadow: 0 0.1rem 0.6rem rgb(0 0 0 / 10%);
+
+  transition: 0.5s;
+}
+
+.MemoItem textarea {
+  max-width: 70%;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+}
+
+.MemoItem button {
+  border: none;
+  font-size: 1.1rem;
+  float: right;
+  border-radius: 5px;
+  min-height: 30px;
+  background-color: white;
+  border: 1px solid white;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+@media (max-width: 550px) {
+  .setColorBoxHiddenText {
+    display: none;
+  }
+
+  .setColorBox {
+    display: flex;
+  }
+
+  .choiceCurrentColorBtn {
+    margin: 30px;
+  }
 }
