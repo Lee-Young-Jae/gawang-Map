@@ -13,8 +13,8 @@ const Memo = () => {
   const [emptySearchResult, setEmptySearchResult] = useState(false);
 
   useEffect(() => {
-    const titleElement = document.getElementsByTagName("title")[0];
-    titleElement.innerHTML = `GawangMap - 메모`;
+    // const titleElement = document.getElementsByTagName("title")[0];
+    // titleElement.innerHTML = `GawangMap - 메모`;
 
     setMemos(JSON.parse(localStorage.getItem("memos")));
   }, []);

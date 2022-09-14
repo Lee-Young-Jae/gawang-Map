@@ -43,6 +43,27 @@ const Home = () => {
     if (paintColors) {
       setPaintColor(JSON.parse(paintColors));
     }
+
+    console.log(
+      `                                       
+      %c██╗   ██╗ ██████╗ ██╗   ██╗███╗   ██╗ ██████╗          ██╗ █████╗ ███████╗
+      %c╚██╗ ██╔╝██╔═══██╗██║   ██║████╗  ██║██╔════╝          ██║██╔══██╗██╔════╝
+      %c ╚████╔╝ ██║   ██║██║   ██║██╔██╗ ██║██║  ███╗         ██║███████║█████╗  
+      %c  ╚██╔╝  ██║   ██║██║   ██║██║╚██╗██║██║   ██║    ██   ██║██╔══██║██╔══╝  
+      %c   ██║   ╚██████╔╝╚██████╔╝██║ ╚████║╚██████╔╝    ╚█████╔╝██║  ██║███████╗
+      %c   ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝      ╚════╝ ╚═╝  ╚═╝╚══════╝  
+      
+      %chttps://github.com/Lee-Young-Jae`,
+      "color: #4527dd",
+      "color: #4932b8",
+      "color: #493a92",
+      "color: #40376d",
+      "color: #2c283e",
+      "color: #0c0c0e",
+      "background-color: #eeeeee; font-size:22px; border-radius: 15px"
+    );
+
+    console.log();
   }, []);
 
   const onClickColorFormItem = useCallback(
@@ -221,13 +242,30 @@ const Home = () => {
     }
   }, [isOpeendCountingMoney, isOpendServeyForm, isOpendMemoForm]);
 
+  const onClickModal = useCallback((e) => {
+    if (e.target.className === "Modal") {
+      setIsOpendCountingMoney(false);
+      setIsOpendMemoForm(false);
+      setIsOpendServeyForm(false);
+    }
+  }, []);
+
   return (
     <div className="HomePage">
       {isOpeendCountingMoney && (
-        <Modal parentProps={<CountingMoney></CountingMoney>}></Modal>
+        <Modal
+          parentProps={<CountingMoney></CountingMoney>}
+          onClick={onClickModal}
+        ></Modal>
       )}
-      {isOpendServeyForm && <Modal parentProps={<Servey></Servey>}></Modal>}
-      {isOpendMemoForm && <Modal parentProps={<Memo></Memo>}></Modal>}
+      {isOpendServeyForm && (
+        <Modal parentProps={<Servey></Servey>} onClick={onClickModal}>
+          {" "}
+        </Modal>
+      )}
+      {isOpendMemoForm && (
+        <Modal parentProps={<Memo></Memo>} onClick={onClickModal}></Modal>
+      )}
       <div className="map">
         <div className="mapCol">
           <div className="mapItem">
@@ -1109,6 +1147,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
       {isOpendMenu ? (
         <div className="Menu">
           <div

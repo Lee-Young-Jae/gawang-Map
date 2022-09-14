@@ -62,9 +62,7 @@ const Servey = () => {
         </div>
         <div>&nbsp; ✔ 2022.07.06 UI 개선 및 웨이팅 카운터 기능 수정</div>
         <div>&nbsp; ✔ 2022.07.07 메모 기능 추가</div>
-      </div>
 
-      <div>
         <h4>❕ 기능 소개</h4>
         <div>&nbsp; ✔ 모든 색상 객체는 우클릭으로 제거 가능합니다.</div>
         <div>
